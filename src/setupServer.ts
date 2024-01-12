@@ -10,6 +10,7 @@ import { config } from './config';
 import { Server } from 'socket.io';
 import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
+import applicationRoutes from './routes'
 
 const SERVER_PORT = 5080;
 export class ChattyServer {
@@ -52,7 +53,9 @@ export class ChattyServer {
         app.use(json({ limit: '50mb' }));
         app.use(urlencoded({ extended: true, limit: '50mb' }));
     }
-    private routeMiddleware(app: Application) {}
+  private routeMiddleware(app: Application) {
+    applicationRoutes(app)
+    }
     private globalErrorHandler(app: Application) {}
     private async startServer(app: Application): Promise<void> {
         try {
