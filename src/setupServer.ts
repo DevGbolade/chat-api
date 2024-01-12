@@ -11,6 +11,7 @@ import { Server } from 'socket.io';
 import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
 import applicationRoutes from './routes'
+import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
 
 const SERVER_PORT = 5080;
 export class ChattyServer {
@@ -56,7 +57,19 @@ export class ChattyServer {
   private routeMiddleware(app: Application) {
     applicationRoutes(app)
     }
-    private globalErrorHandler(app: Application) {}
+    private globalErrorHandler(app: Application): void {
+      app.all('*', (req: Request, res: Response) => {
+        res.status(HTTP_STATUS.NOT_FOUND).json({ message: `${req.originalUrl} not found` });
+      });
+  
+      app.use((error: IErrorResponse, _req: Request, res: Response, next: NextFunction) => {
+        console.error(error);
+        if (error instanceof CustomError) {
+          return res.status(error.statusCode).json(error.serializeErrors());
+        }
+        next();
+      });
+    }
     private async startServer(app: Application): Promise<void> {
         try {
           const httpServer: http.Server = new http.Server(app);
