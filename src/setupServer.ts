@@ -29,15 +29,19 @@ export class ChattyServer {
     this.routeMiddleware(this.app);
     this.globalErrorHandler(this.app);
     this.startServer(this.app);
+
   }
 
   private securityMiddleware(app: Application) {
-    cookieSession({
-      name: 'session',
-      keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
-      maxAge: 24 * 7 * 3600000,
-      secure: config.NODE_ENV !== 'development'
-    });
+    app.use(
+      cookieSession({
+        name: 'session',
+        keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
+        maxAge: 24 * 7 * 3600000,
+        secure: config.NODE_ENV !== 'development',
+        sameSite: 'none' // comment this line when running the server locally
+      })
+    );
 
     app.use(hpp());
     app.use(helmet());
@@ -102,6 +106,8 @@ export class ChattyServer {
     return io;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private socketIOConnections(io: Server): void {}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private socketIOConnections(io: Server): void {
+    // console.log(io);
+   }
 }
