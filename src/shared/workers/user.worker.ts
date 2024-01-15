@@ -17,8 +17,6 @@ class UserWorker {
       done(error as Error);
     }
   }
-
-  
 }
 
 export const userWorker: UserWorker = new UserWorker();
