@@ -10,9 +10,9 @@ import { config } from './config';
 import { Server } from 'socket.io';
 import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
-import applicationRoutes from './routes';
-import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
+import applicationRoutes from '@root/routes';
 import Logger from 'bunyan';
+import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
 
 const SERVER_PORT = 5080;
 const log: Logger = config.createLogger('server');
@@ -32,12 +32,14 @@ export class ChattyServer {
   }
 
   private securityMiddleware(app: Application) {
-    cookieSession({
-      name: 'session',
-      keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
-      maxAge: 24 * 7 * 3600000,
-      secure: config.NODE_ENV !== 'development'
-    });
+    app.use(
+      cookieSession({
+        name: 'session',
+        keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
+        maxAge: 24 * 7 * 3600000,
+        secure: config.NODE_ENV !== 'development'
+      })
+    );
 
     app.use(hpp());
     app.use(helmet());
@@ -103,5 +105,7 @@ export class ChattyServer {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private socketIOConnections(io: Server): void {}
+  private socketIOConnections(io: Server): void {
+    // console.log(io);
+  }
 }

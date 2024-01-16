@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:5080
+@urlPath = api/v1
+
+###
+POST {{baseUrl}}/{{urlPath}}/signup
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "username": "devgbolade",
+  "password": "trustin",
+  "email": "devgbolade@io.com",
+  "avatarColor": "yellow",
+  "avatarImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAKACAYAAADD89WhAAAgAElEQVR4Aezdzc8kV5kn7HSLLWWzphBGmsVLeXrAm6YYIRmkxkaokQ0uW4he"
+}
+
+###
+POST {{baseUrl}}/{{urlPath}}/signin
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "username": "devgbolade",
+  "password": "trustin"
+}
+
+###
+GET {{baseUrl}}/{{urlPath}}/signOUT
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+GET {{baseUrl}}/{{urlPath}}/currentuser
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
