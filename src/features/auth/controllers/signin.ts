@@ -9,6 +9,7 @@ import { IAuthDocument } from '@auth/interfaces/auth.interface';
 import { BadRequestError } from '@global/helpers/error-handler';
 import { userService } from '@service/db/user.service';
 import { IUserDocument } from '@user/interfaces/user.interface';
+import { mailTransport } from '@service/emails/mail.transport';
 
 export class SignIn {
   @joiValidation(loginSchema)
@@ -22,6 +23,7 @@ export class SignIn {
     const passwordsMatch: boolean = await existingUser.comparePassword(password);
     if (!passwordsMatch) {
       throw new BadRequestError('Invalid credentials');
+      // next &&   next(new BadRequestError('Invalid credentials'));
     }
     const user: IUserDocument = await userService.getUserByAuthId(`${existingUser._id}`);
     const userJwt: string = JWT.sign(
@@ -44,6 +46,7 @@ export class SignIn {
       uId: existingUser!.uId,
       createdAt: existingUser!.createdAt
     } as IUserDocument;
+    await mailTransport.sendEmail('lura.kilback44@ethereal.email', 'Logged In', 'You\'ve Successfully signed in');
     res.status(HTTP_STATUS.OK).json({ message: 'User login successfully', user: userDocument, token: userJwt });
   }
 }
