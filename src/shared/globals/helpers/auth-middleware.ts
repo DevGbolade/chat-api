@@ -24,6 +24,7 @@ export class AuthMiddleware {
       throw new NotAuthorizedError('Authentication is required to access this route.');
     }
     next();
+
   }
 }
 

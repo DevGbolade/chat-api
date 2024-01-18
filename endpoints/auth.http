@@ -23,7 +23,7 @@ withCredentials: true
 
 {
   "username": "devgbolade",
-  "password": "trustin"
+  "password": "qwertyui"
 }
 
 ###
@@ -38,3 +38,25 @@ GET {{baseUrl}}/{{urlPath}}/currentuser
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
+
+
+###
+POST {{baseUrl}}/{{urlPath}}/forgot-password
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "email": "devgbolade@io.com"
+}
+
+###
+POST {{baseUrl}}/{{urlPath}}/reset-password/d2fc5cb6953b271ba40cfb6c3e58a9ce6cc0ca2d
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "password": "qwertyui",
+  "confirmPassword": "qwertyui"
+}
