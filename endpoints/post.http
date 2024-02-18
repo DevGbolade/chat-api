@@ -23,14 +23,14 @@ withCredentials: true
 # Feelings - like | love | wow | happy | sad | angry
 
 {
-  "post": "Feeling lucky",
+  "post": "Feeling dangerous",
   "bgColor": "#fff",
   "privacy": "Public",
   "gifUrl": "",
   "profilePicture": "<cloudinary-user-profile-picture-url>",
   "feelings": "happy"
 }
-
+p
 ###
 POST {{baseUrl}}/{{urlPath}}/post/image/post
 Content-Type: application/json
