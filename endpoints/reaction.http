@@ -28,9 +28,9 @@ withCredentials: true
 {
   "userTo": "65a470ea436427bec90f8e59",
   "postId": "65c54c551a8cf354ff0a5472",
-  "type": "wow",
-  "previousReaction": "love",
-  "postReactions": {"like": 0,"love": 1,"happy": 0,"sad": 0,"wow": 0,"angry": 0},
+  "type": "angry",
+  "previousReaction": "like",
+  "postReactions": {"like": 0,"love": 0,"happy": 0,"sad": 0,"wow": 0,"angry": 1},
   "profilePicture": "<cloudinary-user-profile-picture-url>"
 }
 
