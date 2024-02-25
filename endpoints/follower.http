@@ -14,7 +14,8 @@ Accept: application/json
 withCredentials: true
 
 ###
-PUT {{baseUrl}}/{{urlPath}}/user/follow/65a4ed32436427bec90f8e60
+PUT {{baseUrl}}/{{urlPath}}/user/follow/65a470ea436427bec90f8e59
+
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
