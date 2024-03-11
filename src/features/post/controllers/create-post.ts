@@ -10,6 +10,7 @@ import { uploads } from '@global/helpers/cloudinary-upload';
 import { BadRequestError } from '@global/helpers/error-handler';
 import { PostCache } from '@service/redis/post.cache';
 import { postQueue } from '@service/queues/post.queue';
+import { imageQueue } from '@service/queues/image.queue';
 
 const postCache: PostCache = new PostCache();
 
@@ -87,11 +88,11 @@ export class Create {
       createdPost
     });
     postQueue.addPostJob('addPostToDB', { key: req.currentUser!.userId, value: createdPost });
-    // imageQueue.addImageJob('addImageToDB', {
-    //   key: `${req.currentUser!.userId}`,
-    //   imgId: result.public_id,
-    //   imgVersion: result.version.toString()
-    // });
+    imageQueue.addImageJob('addImageToDB', {
+      key: `${req.currentUser!.userId}`,
+      imgId: result.public_id,
+      imgVersion: result.version.toString()
+    });
     res.status(HTTP_STATUS.CREATED).json({ message: 'Post created with image successfully' });
   }
 
