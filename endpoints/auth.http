@@ -8,10 +8,10 @@ Accept: application/json
 withCredentials: true
 
 {
-  "username": "bimples",
-  "password": "trustin",
-  "email": "bimples@gmail.com",
-  "avatarColor": "white",
+  "username": "garry",
+  "password": "qwertyui",
+  "email": "garry@gmail.com",
+  "avatarColor": "red",
   "avatarImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAKACAYAAADD89WhAAAgAElEQVR4Aezdzc8kV5kn7HSLLWWzphBGmsVLeXrAm6YYIRmkxkaokQ0uW4he"
 }
 
