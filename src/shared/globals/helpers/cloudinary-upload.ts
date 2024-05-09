@@ -15,6 +15,7 @@ export function uploads(
         invalidate
       },
       (error: UploadApiErrorResponse | undefined, result: UploadApiResponse | undefined) => {
+        console.log('ERROR', error);
         if (error) resolve(error);
         resolve(result);
       }

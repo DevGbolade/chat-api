@@ -12,7 +12,7 @@ export class SocketIOPostHandler {
 
   public listen(): void {
     this.io.on('connection', (socket: Socket) => {
-      console.log(socket.id);
+      console.info(socket.id);
     });
   }
 }

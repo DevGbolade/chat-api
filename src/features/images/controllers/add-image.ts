@@ -21,7 +21,7 @@ export class Add {
     if (!result?.public_id) {
       throw new BadRequestError('File upload: Error occurred. Try again.');
     }
-    const url = `https://res.cloudinary.com/dyamr9ym3/image/upload/v${result.version}/${result.public_id}`;
+    const url = `https://res.cloudinary.com/rozay10/image/upload/v${result.version}/${result.public_id}`;
     const cachedUser: IUserDocument = (await userCache.updateSingleUserItemInCache(
       `${req.currentUser!.userId}`,
       'profilePicture',
@@ -70,6 +70,7 @@ export class Add {
     let publicId = '';
     if (isDataURL) {
       const result: UploadApiResponse = (await uploads(image)) as UploadApiResponse;
+      // console.log('BACKGROUND-IMAGE', result);
       if (!result.public_id) {
         throw new BadRequestError(result.message);
       } else {
