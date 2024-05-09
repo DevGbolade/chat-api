@@ -15,6 +15,8 @@ class ImageService {
   }
 
   public async addImage(userId: string, imgId: string, imgVersion: string, type: string): Promise<void> {
+    // console.log('IMAGEID', imgId);
+    // console.log('imgVersion', imgVersion);
     await ImageModel.create({
       userId,
       bgImageVersion: type === 'background' ? imgVersion : '',

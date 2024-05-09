@@ -48,12 +48,13 @@ export class ChattyServer {
         secure: config.NODE_ENV !== 'development'
       })
     );
-
     app.use(hpp());
     app.use(helmet());
+    app.options('http://localhost:3000', cors());
+
     app.use(
       cors({
-        origin: config.CLIENT_URL,
+        origin: 'http://localhost:3000',
         credentials: true,
         optionsSuccessStatus: 200,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
