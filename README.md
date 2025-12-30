@@ -120,7 +120,7 @@ Each feature module typically contains:
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14 or higher)
+- Node.js (v18 or higher recommended)
 - MongoDB
 - Redis
 - Cloudinary account (for image storage)
@@ -130,7 +130,7 @@ Each feature module typically contains:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/DevGbolade/chat-api.git
+git clone <repository-url>
 cd chat-api
 ```
 
