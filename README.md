@@ -182,7 +182,7 @@ The API will be available at `http://localhost:5080`
 - `npm run lint:fix` - Fix linting errors
 - `npm run prettier:check` - Check code formatting
 - `npm run prettier:fix` - Fix code formatting
-- `npm run redis` - Start Redis commander
+- `npm run redis` - Start Redis Commander web UI for database management
 - `npm run seeds:dev` - Seed database with test data
 
 ## API Endpoints
