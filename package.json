@@ -1,7 +1,7 @@
 {
   "name": "chatty-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full-featured social media & real-time chat backend API built with Node.js, Express, TypeScript, and Socket.IO. Includes auth, posts, reactions, messaging, notifications, media uploads, and background job processing.",
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=production pm2 start ./build/src/app.js -i 5 --attach --watch | ./node_modules/.bin/bunyan",
